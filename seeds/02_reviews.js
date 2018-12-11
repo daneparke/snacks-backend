@@ -5,7 +5,8 @@ exports.seed = function (knex, Promise) {
         title: "This sucks",
         text: "Taste like dogshit",
         rating: 2,
-        snack_id: 1
+        snack_id: 1,
+        user_id: 1
       }]);
     });
 };

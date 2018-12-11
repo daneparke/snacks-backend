@@ -5,6 +5,7 @@ exports.up = function (knex, Promise) {
         review.string('text')
         review.integer('rating')
         review.integer('snack_id').references('id').inTable('snacks')
+        review.integer('user_id').references('id').inTable('users')
     })
 };
 

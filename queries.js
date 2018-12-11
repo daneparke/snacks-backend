@@ -3,17 +3,18 @@ module.exports = {
     getAllSnacks() {
         return db.select().from('snacks')
     },
-    getAllReviews() {
-        return db.select().from('reviews')
-    },
-    getReviewById(id) {
-        return db('reviews').where('id', id)
-    },
     getSnackById(id) {
         return db('snacks').where('id', id)
     },
     createSnack(newSnack) {
         return db('snacks').insert(newSnack).returning('*')
+    },
+    getAllReviews() {
+        return db.from('reviews').select('reviews.id', 'title', 'text', 'rating', 'snack_id', 'user_id')
+            .leftJoin('users', 'user_id', 'users.id').select('users.first_name', 'users.last_name')
+    },
+    getReviewById(id) {
+        return db('reviews').where('id', id)
     },
     createReview(newReview) {
         return db('reviews').insert(newReview).returning('*')
@@ -23,8 +24,17 @@ module.exports = {
     },
     deleteReview(id) {
         return db('reviews').where('id', id).delete()
+    },
+    getAllUsers() {
+        return db.select().from('users')
+    },
+    getUserById(id) {
+        return db('users').where('id', id)
+    },
+    createUser(newUser) {
+        return db('users').insert(newUser).returning('*')
+    },
+    deleteUser(id) {
+        return db('users').where('id', id).delete()
     }
-
-
-
 }
