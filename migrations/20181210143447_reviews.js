@@ -6,9 +6,10 @@ exports.up = function (knex, Promise) {
         review.integer('rating')
         review.integer('snack_id').references('id').inTable('snacks')
         review.integer('user_id').references('id').inTable('users')
+        // .onDelete('cascade')
     })
-};
+}
 
 exports.down = function (knex, Promise) {
     return knex.schema.dropTableIfExists('reviews')
-};
+}

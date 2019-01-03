@@ -5,9 +5,10 @@ exports.up = function (knex, Promise) {
         user.string('last_name')
         user.string('email')
         user.string('hashed_password')
+        user.boolean('admin')
     })
 }
 
 exports.down = function (knex, Promise) {
     return knex.schema.dropTableIfExists('users')
-};
+}

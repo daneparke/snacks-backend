@@ -1,4 +1,4 @@
-const db = require('./database-connection');
+const db = require('./database-connection')
 module.exports = {
     getAllSnacks() {
         return db.select().from('snacks')
@@ -8,6 +8,12 @@ module.exports = {
     },
     createSnack(newSnack) {
         return db('snacks').insert(newSnack).returning('*')
+    },
+    editSnack(id, snack) {
+        return db('snacks').where('id', id).update(snack).returning('*')
+    },
+    deleteSnack(id) {
+        return db('snacks').where('id', id).delete()
     },
     getAllReviews() {
         return db.from('reviews').select('reviews.id', 'title', 'text', 'rating', 'snack_id', 'user_id')
