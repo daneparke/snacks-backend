@@ -27,7 +27,7 @@ app.delete('/users/:id', (req, res) => {
 })
 
 app.get('/snacks', (req, res) => {
-    queries.getAllSnacks().then(response => res.send(response))
+    queries.getAllSnacks().then(response => res.status(200).send(response))
 })
 app.get('/snacks/:id', (req, res) => {
     queries.getSnackById(req.params.id).then(snack => res.status(200).send(snack[0]))
@@ -38,7 +38,7 @@ app.post('/snacks', (req, res) => {
     })
 })
 app.delete('/snacks/:id', (req, res) => {
-    queries.deleteSnack(req.params.id).then(res.status(204).send())
+    queries.deleteSnack(req.params.id).then(() => res.status(204).send())
 })
 app.put('/snacks/:id', (req, res) => {
     queries.editSnack(req.params.id, req.body).then(editSnack => res.json(editSnack))
