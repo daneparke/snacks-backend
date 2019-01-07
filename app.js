@@ -55,7 +55,7 @@ app.post('/reviews', (req, res) => {
     })
 })
 app.delete('/reviews/:id', (req, res) => {
-    queries.deleteReview(req.params.id).then(res.status(204).send())
+    queries.deleteReview(req.params.id).then(() => res.status(204).send())
 })
 app.put('/reviews/:id', (req, res) => {
     queries.editReview(req.params.id, req.body).then(editReview => res.json(editReview))
