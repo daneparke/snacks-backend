@@ -38,10 +38,10 @@ app.post('/snacks', (req, res) => {
     })
 })
 app.delete('/snacks/:id', (req, res) => {
-    queries.deleteReview(req.params.id).then(res.status(204).send())
+    queries.deleteSnack(req.params.id).then(res.status(204).send())
 })
 app.put('/snacks/:id', (req, res) => {
-    queries.editReview(req.params.id, req.body).then(editSnack => res.json(editSnack))
+    queries.editSnack(req.params.id, req.body).then(editSnack => res.json(editSnack))
 })
 app.get('/reviews', (req, res) => {
     queries.getAllReviews().then(response => res.send(response))

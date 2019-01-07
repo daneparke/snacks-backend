@@ -4,8 +4,8 @@ exports.up = function (knex, Promise) {
         review.string('title')
         review.string('text')
         review.integer('rating')
-        review.integer('snack_id').references('id').inTable('snacks')
-        review.integer('user_id').references('id').inTable('users')
+        review.integer('snack_id').references('id').inTable('snacks').onDelete('cascade')
+        review.integer('user_id').references('id').inTable('users').onDelete('cascade')
         // .onDelete('cascade')
     })
 }
